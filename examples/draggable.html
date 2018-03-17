@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Drag n Drop</title>
+    <link rel="stylesheet" href="../styles/style.css">
+</head>
+<body>
+<div class="box">
+    <div id="dnd_1" class="dnd" style="top: 10px;left: 10px">
+        dnd_1
+    </div>
+    <div id="dnd_2" class="dnd" style="top: 190px;left: 10px">
+        dnd_2
+        <br>
+        changeY - false
+    </div>
+    <div id="dnd_3" class="dnd" style="top: 190px;left: 890px">
+        dnd_3
+        <br>
+        changeX - false
+    </div>
+    <div id="dnd_4" class="dnd" style="top: 10px;left: 450px">
+        dnd_4
+        <br>
+        X: <span id="dnd_4_x"></span>
+        <br>
+        Y: <span id="dnd_4_y"></span>
+    </div>
+</div>
+<div class="box">
+    <div id="tb" style="right: 400px;bottom: 50px;width: 120px;height: 120px;position: absolute;background-color: red"></div>
+    <div id="dnd_5" class="dnd" style="top: 10px;left: 10px">
+        dnd_1
+    </div>
+</div>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        $cg('#dnd_1').draggable();
+        $cg('#dnd_2').draggable({
+            changeY: false
+        });
+        $cg('#dnd_3').draggable({
+            changeX: false
+        });
+        $cg('#dnd_4').draggable({
+            dragging: function (elem, x, y) {
+                var dndXBox = document.getElementById('dnd_4_x');
+                var dndYBox = document.getElementById('dnd_4_y');
+                dndXBox.innerHTML = x;
+                dndYBox.innerHTML = y;
+            }
+        });
+        $cg('#dnd_5').draggable({
+            targetBox: '#tb'
+        });
+    });
+</script>
+<script src="../lib/CG.js"></script>
+<script src="../lib/DnD.js"></script>
+</body>
+</html>
