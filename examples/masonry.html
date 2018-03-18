@@ -35,6 +35,7 @@
 
 <script src="../lib/CG.js"></script>
 <script src="../lib/Masonry.js"></script>
+<script src="../lib/events/MasonryEvents.js"></script>
 <script>
     document.addEventListener("DOMContentLoaded", function () {
         $cg('.wrap').masonry({
@@ -42,10 +43,12 @@
             width: 200,
             columnGapBottom: 10,
             columnGapRight: 10,
-            beforeRenderElement: function (el) {
-                console.log('before', el);
-                if(el.classList.contains('changeH')){
-                    el.style.height = '200px';
+            events: {
+                beforeRenderElement: function (el) {
+                    /** пользовательское событие*/
+                },
+                afterRenderElement: function (el) {
+                    /** пользовательское событие*/
                 }
             }
         })
